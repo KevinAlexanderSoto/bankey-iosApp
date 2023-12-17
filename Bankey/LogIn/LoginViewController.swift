@@ -32,11 +32,17 @@ extension LoginViewController {
         SignInButton.configuration?.imagePadding = 8
         SignInButton.setTitle("Sign In", for: [])
         SignInButton.addTarget(self, action: #selector(onSignInClick), for: .primaryActionTriggered)
+        
+        errorMessageLabel.textAlignment = .center
+        errorMessageLabel.textColor = .systemRed
+        errorMessageLabel.numberOfLines = 0
+        errorMessageLabel.text = "Generic error"
+        errorMessageLabel.isHidden = false
     }
     
     
     private func layout( ){
-        addSubViews(UIArray: [LoginView, SignInButton])
+        addSubViews(UIArray: [LoginView, SignInButton, errorMessageLabel])
         //LoginView
         NSLayoutConstraint.activate([
             LoginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -50,6 +56,13 @@ extension LoginViewController {
             SignInButton.topAnchor.constraint(equalToSystemSpacingBelow: LoginView.bottomAnchor, multiplier: 1),
             SignInButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: SignInButton.trailingAnchor, multiplier: 2),
+            
+        ])
+        //error label
+        NSLayoutConstraint.activate([
+            errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: SignInButton.bottomAnchor, multiplier: 2),
+            errorMessageLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: errorMessageLabel.trailingAnchor, multiplier: 1),
             
         ])
     }
