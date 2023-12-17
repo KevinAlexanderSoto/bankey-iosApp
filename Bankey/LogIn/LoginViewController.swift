@@ -12,6 +12,8 @@ class LoginViewController: UIViewController {
     
     let LoginView = LogInView()
     let SignInButton = UIButton(type: .system)
+    let errorMessageLabel = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
@@ -24,10 +26,8 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     private func style(){
-        
-        LoginView.translatesAutoresizingMaskIntoConstraints = false
-        
-        SignInButton.translatesAutoresizingMaskIntoConstraints = false
+        setTranslatesAutoresizingMask(UIArray: [LoginView, SignInButton, errorMessageLabel])
+       
         SignInButton.configuration = .filled()
         SignInButton.configuration?.imagePadding = 8
         SignInButton.setTitle("Sign In", for: [])
@@ -36,9 +36,7 @@ extension LoginViewController {
     
     
     private func layout( ){
-        view.addSubview(LoginView)
-        view.addSubview(SignInButton)
-        
+        addSubViews(UIArray: [LoginView, SignInButton])
         //LoginView
         NSLayoutConstraint.activate([
             LoginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -54,6 +52,18 @@ extension LoginViewController {
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: SignInButton.trailingAnchor, multiplier: 2),
             
         ])
+    }
+    
+    private func setTranslatesAutoresizingMask( UIArray: [UIView] ){
+        for UIview in UIArray {
+            UIview.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    private func addSubViews( UIArray: [UIView] ){
+        for UIview in UIArray {
+            view.addSubview(UIview)
+        }
     }
 }
 

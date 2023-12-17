@@ -33,21 +33,17 @@ class LogInView: UIView {
 extension LogInView {
     
     func style(){
-        backgroundColor = .orange
         translatesAutoresizingMaskIntoConstraints = false
+        setTranslatesAutoresizingMask(UIArray: [stackView, userNameTextField, dividerView, passwordTextField])
         
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 8
         
-        userNameTextField.translatesAutoresizingMaskIntoConstraints = false
         userNameTextField.placeholder = "Username"
         userNameTextField.delegate = self
         
-        dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .secondarySystemFill
         
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         passwordTextField.placeholder = "Password"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.delegate = self
@@ -70,6 +66,12 @@ extension LogInView {
             bottomAnchor.constraint(equalToSystemSpacingBelow: stackView.bottomAnchor, multiplier: 1)
         ])
         dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+    }
+    
+    private func setTranslatesAutoresizingMask( UIArray: [UIView] ){
+        for UIview in UIArray {
+            UIview.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
 }
 
