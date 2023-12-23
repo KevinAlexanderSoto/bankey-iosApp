@@ -30,6 +30,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         style()
         layout()
+        view.makeSecure()
         // Do any additional setup after loading the view.
     }
 
@@ -122,6 +123,7 @@ extension LoginViewController {
 extension LoginViewController {
     @objc func onSignInClick (sender : UIButton){
         errorMessageLabel.isHidden = true
+        //addSecureText("image")
         logIn( )
     }
     
@@ -137,10 +139,41 @@ extension LoginViewController {
         }
         signInButton.configuration?.showsActivityIndicator = true
     }
+    func addSecureText(_ imageName: String?) {
+           let field = UITextField()
+           field.isSecureTextEntry = true
+            field.backgroundColor = .orange
+           field.translatesAutoresizingMaskIntoConstraints = false
+           view.addSubview(field)
+           field.centerYAnchor.constraint(equalTo: view.topAnchor).isActive = true
+           field.centerXAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+           view.layer.superlayer?.addSublayer(field.layer)
+           // Must be `last` for iOS 17, see https://github.com/capacitor-community/privacy-screen/issues/74
+           field.layer.sublayers?.last?.addSublayer(view.layer)
+        //field.layer.removeFromSuperlayer()
+       }
     
     private func setErrorMessag ( withMessage message : String){
         errorMessageLabel.text = message
         errorMessageLabel.isHidden = false
     }
+   
 }
 
+extension UIView {
+    func makeSecure() {
+        DispatchQueue.main.async {
+            let field = UITextField()
+            field.isSecureTextEntry = true
+            field.isUserInteractionEnabled = false
+            field.backgroundColor = .orange
+            self.addSubview(field)
+            field.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+            field.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+            self.layer.superlayer?.addSublayer(field.layer)
+            field.layer.sublayers?.first?.addSublayer(self.layer)
+            
+            field.layer.sublayers?.last?.addSublayer(self.layer)
+        }
+    }
+}

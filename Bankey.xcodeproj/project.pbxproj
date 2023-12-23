@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		12B842372B32690000E6722E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B842362B32690000E6722E /* OnboardingViewController.swift */; };
 		12BAEF662B2261300078F528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF652B2261300078F528 /* AppDelegate.swift */; };
 		12BAEF6A2B2261300078F528 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF692B2261300078F528 /* LoginViewController.swift */; };
 		12BAEF6F2B2261300078F528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12BAEF6E2B2261300078F528 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		12B842362B32690000E6722E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		12BAEF622B2261300078F528 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12BAEF652B2261300078F528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12BAEF692B2261300078F528 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		12B842352B32689C00E6722E /* onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				12B842362B32690000E6722E /* OnboardingViewController.swift */,
+			);
+			path = onboarding;
+			sourceTree = "<group>";
+		};
 		12BAEF592B2261300078F528 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		12BAEF642B2261300078F528 /* Bankey */ = {
 			isa = PBXGroup;
 			children = (
+				12B842352B32689C00E6722E /* onboarding */,
 				12C333762B238B3B00444FF3 /* Files */,
 				12C333772B238C0600444FF3 /* LogIn */,
 				12BAEF652B2261300078F528 /* AppDelegate.swift */,
@@ -273,6 +284,7 @@
 				12C333792B239BBC00444FF3 /* LogInView.swift in Sources */,
 				12BAEF6A2B2261300078F528 /* LoginViewController.swift in Sources */,
 				12BAEF662B2261300078F528 /* AppDelegate.swift in Sources */,
+				12B842372B32690000E6722E /* OnboardingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
