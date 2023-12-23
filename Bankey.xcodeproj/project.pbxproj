@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12B842372B32690000E6722E /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B842362B32690000E6722E /* OnboardingViewController.swift */; };
+		12B842372B32690000E6722E /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B842362B32690000E6722E /* OnboardingContainerViewController.swift */; };
 		12BAEF662B2261300078F528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF652B2261300078F528 /* AppDelegate.swift */; };
 		12BAEF6A2B2261300078F528 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF692B2261300078F528 /* LoginViewController.swift */; };
 		12BAEF6F2B2261300078F528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12BAEF6E2B2261300078F528 /* Assets.xcassets */; };
@@ -15,6 +15,7 @@
 		12BAEF7D2B2261310078F528 /* BankeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF7C2B2261310078F528 /* BankeyTests.swift */; };
 		12BAEF872B2261310078F528 /* BankeyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF862B2261310078F528 /* BankeyUITests.swift */; };
 		12BAEF892B2261310078F528 /* BankeyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BAEF882B2261310078F528 /* BankeyUITestsLaunchTests.swift */; };
+		12BB2D7C2B3753ED00DBD189 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12BB2D7B2B3753ED00DBD189 /* OnboardingViewController.swift */; };
 		12C333792B239BBC00444FF3 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C333782B239BBC00444FF3 /* LogInView.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12B842362B32690000E6722E /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		12B842362B32690000E6722E /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		12BAEF622B2261300078F528 /* Bankey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bankey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		12BAEF652B2261300078F528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		12BAEF692B2261300078F528 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		12BAEF822B2261310078F528 /* BankeyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankeyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12BAEF862B2261310078F528 /* BankeyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyUITests.swift; sourceTree = "<group>"; };
 		12BAEF882B2261310078F528 /* BankeyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankeyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		12BB2D7B2B3753ED00DBD189 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		12C333782B239BBC00444FF3 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +81,8 @@
 		12B842352B32689C00E6722E /* onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				12B842362B32690000E6722E /* OnboardingViewController.swift */,
+				12B842362B32690000E6722E /* OnboardingContainerViewController.swift */,
+				12BB2D7B2B3753ED00DBD189 /* OnboardingViewController.swift */,
 			);
 			path = onboarding;
 			sourceTree = "<group>";
@@ -283,8 +286,9 @@
 			files = (
 				12C333792B239BBC00444FF3 /* LogInView.swift in Sources */,
 				12BAEF6A2B2261300078F528 /* LoginViewController.swift in Sources */,
+				12BB2D7C2B3753ED00DBD189 /* OnboardingViewController.swift in Sources */,
 				12BAEF662B2261300078F528 /* AppDelegate.swift in Sources */,
-				12B842372B32690000E6722E /* OnboardingViewController.swift in Sources */,
+				12B842372B32690000E6722E /* OnboardingContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
