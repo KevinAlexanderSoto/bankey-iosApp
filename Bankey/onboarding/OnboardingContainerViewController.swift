@@ -8,21 +8,27 @@
 import Foundation
 import UIKit
 
+
+protocol OnboardingViewControllerDelegate: AnyObject {
+    func didFinishOnboarding( )
+    func didCloseOnboarding( )
+}
 class OnboardingContainerViewController: UIViewController {
 
+    weak var onboardingViewControllerDelegate: OnboardingViewControllerDelegate?
+    
+    
     let pageViewController: UIPageViewController
+    let closeButton = UIButton(type: .system)
     var pages = [UIViewController]()
-    var currentVC: UIViewController {
-        didSet {
-        }
-    }
+    var currentVC: UIViewController
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         self.pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         
-        let page1 = ViewController1()
-        let page2 = ViewController2()
-        let page3 = ViewController3()
+        let page1 = OnboardingViewController(imageName: "delorean", titleText: "Bankey is faster, earier to use, and has a brand new look and feel that will make you feel like old.")
+        let page2 = OnboardingViewController(imageName: "thumbs", titleText: "Bankey is faster, earier to use, and has a brand new look and feel that will make you feel like old.")
+        let page3 = OnboardingViewController(imageName: "world", titleText: "Move your money everywhere ")
         
         pages.append(page1)
         pages.append(page2)
@@ -58,6 +64,31 @@ class OnboardingContainerViewController: UIViewController {
         
         pageViewController.setViewControllers([pages.first!], direction: .forward, animated: false, completion: nil)
         currentVC = pages.first!
+        
+        style( )
+        layout()
+    }
+}
+
+extension OnboardingContainerViewController {
+    private func style( ){
+        setTranslatesAutoresizingMask(UIArray: [closeButton])
+        closeButton.setTitle("close", for: [])
+        closeButton.addTarget(self, action: #selector(onCloseOnboarding), for: .primaryActionTriggered)
+    }
+    
+    private func layout( ){
+        addSubViews(UIArray: [closeButton])
+        
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalToSystemSpacingBelow: view.safeAreaLayoutGuide.topAnchor, multiplier: 2),
+            closeButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 2),
+        ])
+        
+    }
+    
+    @objc func onCloseOnboarding ( ){
+        onboardingViewControllerDelegate?.didCloseOnboarding()
     }
 }
 
@@ -79,7 +110,9 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
     }
 
     private func getNextViewController(from viewController: UIViewController) -> UIViewController? {
-        guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { return nil }
+        guard let index = pages.firstIndex(of: viewController), index + 1 < pages.count else { 
+            onboardingViewControllerDelegate?.didFinishOnboarding()
+            return nil }
         currentVC = pages[index + 1]
         return pages[index + 1]
     }
@@ -92,27 +125,18 @@ extension OnboardingContainerViewController: UIPageViewControllerDataSource {
         return pages.firstIndex(of: self.currentVC) ?? 0
     }
 }
-
-// MARK: - ViewControllers
-class ViewController1: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemRed
-    }
-   
+extension OnboardingContainerViewController {
     
-}
-
-class ViewController2: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+    private func setTranslatesAutoresizingMask( UIArray: [UIView] ){
+        for UIview in UIArray {
+            UIview.translatesAutoresizingMaskIntoConstraints = false
+        }
     }
-}
-
-class ViewController3: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemBlue
+    
+    
+    private func addSubViews( UIArray: [UIView] ){
+        for UIview in UIArray {
+            view.addSubview(UIview)
+        }
     }
 }

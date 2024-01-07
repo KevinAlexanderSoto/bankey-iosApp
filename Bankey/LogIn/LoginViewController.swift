@@ -7,6 +7,13 @@
 
 import UIKit
 
+
+protocol LoginViewControllerDelegate: AnyObject {
+    func didLogIn( )
+    
+    func didLogOut( )
+}
+
 // te view Controller handle events of our app
 class LoginViewController: UIViewController {
     
@@ -15,6 +22,16 @@ class LoginViewController: UIViewController {
     let subTitleView = UILabel()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
+    let msg = "Hello world"
+    
+    let toastController: UIAlertController =
+            UIAlertController(
+              title: "Login",
+              message: "Hello world,you ahve been logged in",
+              preferredStyle: .alert
+            )
+    
+    weak var loginViewControllerDelegate: LoginViewControllerDelegate?
     
     //computed properties
     
@@ -138,26 +155,34 @@ extension LoginViewController {
             return
         }
         signInButton.configuration?.showsActivityIndicator = true
+        showAlert()
+        loginViewControllerDelegate?.didLogIn()
     }
-    func addSecureText(_ imageName: String?) {
-           let field = UITextField()
-           field.isSecureTextEntry = true
-            field.backgroundColor = .orange
-           field.translatesAutoresizingMaskIntoConstraints = false
-           view.addSubview(field)
-           field.centerYAnchor.constraint(equalTo: view.topAnchor).isActive = true
-           field.centerXAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-           view.layer.superlayer?.addSublayer(field.layer)
-           // Must be `last` for iOS 17, see https://github.com/capacitor-community/privacy-screen/issues/74
-           field.layer.sublayers?.last?.addSublayer(view.layer)
-        //field.layer.removeFromSuperlayer()
-       }
     
     private func setErrorMessag ( withMessage message : String){
         errorMessageLabel.text = message
         errorMessageLabel.isHidden = false
     }
    
+}
+
+extension LoginViewController  {
+    
+    func showAlert(){
+        self.present(
+                toastController,
+                animated: true,
+                completion: nil
+              )
+
+              DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                  self.toastController.dismiss(
+                    animated: true,
+                    completion: nil
+                )
+              }
+    }
+            
 }
 
 extension UIView {
